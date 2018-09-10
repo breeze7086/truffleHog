@@ -40,6 +40,7 @@ def main():
     if args.rules:
         try:
             with open(args.rules, "r") as ruleFile:
+                print("ruleFile.read " + ruleFile.read())
                 rules = json.loads(ruleFile.read())
                 for rule in rules:
                     print("Regex rule is " + rule)
