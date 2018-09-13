@@ -40,11 +40,8 @@ def main():
     if args.rules:
         try:
             with open(args.rules, "r") as ruleFile:
-                print("ruleFile.read " + ruleFile.read())
                 rules = json.loads(ruleFile.read())
                 for rule in rules:
-                    print("Regex rule is " + rule)
-                    print("rules[rule] is " + rules[rule])
                     rules[rule] = re.compile(rules[rule])
         except (IOError, ValueError) as e:
             raise("Error reading rules file")
