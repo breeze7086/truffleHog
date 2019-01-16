@@ -208,7 +208,7 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
             foundRegex['branch'] = branch_name
             foundRegex['commit'] = prev_commit.message
             foundRegex['diff'] = blob.diff.decode('utf-8', errors='replace')
-            foundRegex['stringsFound'] = found_strings
+            foundRegex['stringsFound'] = found_strings + " mayer"
             foundRegex['printDiff'] = found_diff
             foundRegex['reason'] = key
             foundRegex['commitHash'] = prev_commit.hexsha
