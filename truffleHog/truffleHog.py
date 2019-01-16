@@ -204,7 +204,9 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
             foundRegex['date'] = commit_time
             foundRegex['path'] = blob.b_path if blob.b_path else blob.a_path
             foundRegex['branch'] = branch_name
+            print("******")
             foundRegex['commit'] = prev_commit.message
+            print("******")
             foundRegex['diff'] = blob.diff.decode('utf-8', errors='replace')
             foundRegex['stringsFound'] = found_strings
             foundRegex['printDiff'] = found_diff
