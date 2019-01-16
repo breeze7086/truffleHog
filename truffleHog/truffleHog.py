@@ -201,7 +201,7 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
             found_diff = printableDiff.replace(printableDiff, bcolors.WARNING + found_string + bcolors.ENDC)
         if found_strings:
             if len(found_strings[0]) >= 30:
-                found_strings = found_strings[0:30]
+                found_strings = found_strings[0][0:30]
             foundRegex = {}
             foundRegex['date'] = commit_time
             foundRegex['path'] = blob.b_path if blob.b_path else blob.a_path
