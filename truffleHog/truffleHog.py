@@ -202,6 +202,7 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
         if found_strings:
             print("$$$$$$$$$$$$$$")
             print(found_strings)
+            print(len(found_strings))
             if len(found_strings) >= 30:
                 found_strings = found_strings[0:30]
             print("%%%%%%%%%%%%%")
