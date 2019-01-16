@@ -200,6 +200,8 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
         for found_string in found_strings:
             found_diff = printableDiff.replace(printableDiff, bcolors.WARNING + found_string + bcolors.ENDC)
         if found_strings:
+            print("$$$$$$$$$$$$$$")
+            print(found_strings)
             if len(found_strings) >= 30:
                 found_strings = found_strings[0:30]
             foundRegex = {}
@@ -208,7 +210,7 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
             foundRegex['branch'] = branch_name
             foundRegex['commit'] = prev_commit.message
             foundRegex['diff'] = blob.diff.decode('utf-8', errors='replace')
-            foundRegex['stringsFound'] = found_strings + " mayer"
+            foundRegex['stringsFound'] = found_strings
             foundRegex['printDiff'] = found_diff
             foundRegex['reason'] = key
             foundRegex['commitHash'] = prev_commit.hexsha
