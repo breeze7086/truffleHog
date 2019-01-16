@@ -42,13 +42,14 @@ def main():
             with open(args.rules, "r") as ruleFile:
                 rules = json.loads(ruleFile.read())
                 for rule in rules:
-                    rules[rule] = re.compile(rules[rule])
+                    #rules[rule] = re.compile(rules[rule])
+                    rules[rule] = rules[rule]
         except (IOError, ValueError) as e:
             raise("Error reading rules file")
         for regex in dict(regexes):
             del regexes[regex]
         for regex in rules:
-            regexes[regex] = rules[regex]
+            regexes[regex] = re.compile(rules[regex])
     do_entropy = str2bool(args.do_entropy)
     output = find_strings(args.git_url, args.since_commit, args.max_depth, args.output_json, args.do_regex, do_entropy, surpress_output=False, branch=args.branch)
     project_path = output["project_path"]
@@ -197,10 +198,8 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
     regex_matches = []
     for key in secret_regexes:
         found_strings = secret_regexes[key].findall(printableDiff)
-        print("*****printableDiff")
-        print(printableDiff)
-        print("*****key********")
-        print(key)
+        print("*****rules[key]*******")
+        print(rules[key])
         for found_string in found_strings:
             found_diff = printableDiff.replace(printableDiff, bcolors.WARNING + found_string + bcolors.ENDC)
         if found_strings:
