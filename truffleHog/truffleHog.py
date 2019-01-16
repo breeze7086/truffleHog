@@ -197,7 +197,7 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
     regex_matches = []
     for key in secret_regexes:
         found_strings = secret_regexes[key].findall(printableDiff)
-        print("*****printtableDiff")
+        print("*****printableDiff")
         print(printtableDiff)
         print("*****key********")
         print(key)
