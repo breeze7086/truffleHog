@@ -197,6 +197,8 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
     regex_matches = []
     for key in secret_regexes:
         found_strings = secret_regexes[key].findall(printableDiff)
+        if len(found_strings) >= 30:
+            found_strings = found_strings[0:30]
         for found_string in found_strings:
             found_diff = printableDiff.replace(printableDiff, bcolors.WARNING + found_string + bcolors.ENDC)
         if found_strings:
@@ -204,9 +206,7 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
             foundRegex['date'] = commit_time
             foundRegex['path'] = blob.b_path if blob.b_path else blob.a_path
             foundRegex['branch'] = branch_name
-            print("******")
             foundRegex['commit'] = prev_commit.message
-            print("******")
             foundRegex['diff'] = blob.diff.decode('utf-8', errors='replace')
             foundRegex['stringsFound'] = found_strings
             foundRegex['printDiff'] = found_diff
