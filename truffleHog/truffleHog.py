@@ -204,6 +204,8 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
             print(found_strings)
             if len(found_strings) >= 30:
                 found_strings = found_strings[0:30]
+            print("%%%%%%%%%%%%%")
+            print(found_strings)
             foundRegex = {}
             foundRegex['date'] = commit_time
             foundRegex['path'] = blob.b_path if blob.b_path else blob.a_path
